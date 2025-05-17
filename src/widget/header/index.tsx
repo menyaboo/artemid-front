@@ -21,7 +21,7 @@ const menuConfig = [
     roles: [EUserRoles.ADMIN],
   },
   {
-    element: <Link to={ ERouterPath.TYPE }>Все типы поломок</Link>,
+    element: <Link to={ ERouterPath.TYPE }>Все типы</Link>,
     roles: [EUserRoles.ADMIN],
   },
   {

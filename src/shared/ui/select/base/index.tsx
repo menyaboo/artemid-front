@@ -5,20 +5,25 @@ import { ChevronDown, ChevronUp } from "lucide-react";
 
 interface IBaseSelectProps<TValue, TItem extends ILabelValueProps<TValue>> extends ICheckedStatedProps<TValue, TItem> {
   placeholder?: string;
+  error?: string;
 }
 
 const Select = <TValue, TItem extends ILabelValueProps<TValue>>(
-  { items, value, onChange, placeholder = 'Выберите значение' }: IBaseSelectProps<TValue, TItem>
+  { items, value, onChange, error, placeholder = 'Выберите значение' }: IBaseSelectProps<TValue, TItem>
 ): ReactNode => {
   const selectedLabel = items.find((opt) => opt.value === value)?.label || placeholder;
 
   return (
     <Popover
       trigger={ (isOpen) =>
-        <div
-          className="border border-background-tertiary rounded px-4 py-2 min-w-[200px] gap-4 flex justify-between items-center bg-background-main cursor-pointer">
-          <span>{ selectedLabel }</span>
-          <span className="text-gray-500 transform transition-transform">{isOpen ? <ChevronUp /> : <ChevronDown />}</span>
+        <div>
+          <div
+            className="border border-background-tertiary rounded px-4 py-2 min-w-[200px] gap-4 flex justify-between items-center bg-background-main cursor-pointer">
+            <span>{ selectedLabel }</span>
+            <span className="text-gray-500 transform transition-transform">{ isOpen ? <ChevronUp/> :
+              <ChevronDown/> }</span>
+          </div>
+          {error && <span className="text-error">{error}</span>}
         </div>
       }
       placement="bottom"

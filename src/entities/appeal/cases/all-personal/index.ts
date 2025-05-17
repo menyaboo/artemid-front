@@ -10,7 +10,7 @@ const useGetAllPersonalAppealUseCase = () => {
 
   return useQuery({
     queryFn: execute,
-    queryKey: [EQueryValues.GetAllAppeal],
+    queryKey: [EQueryValues.GetAllAppealPersonal],
   })
 }
 

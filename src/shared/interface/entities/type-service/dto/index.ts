@@ -1,9 +1,9 @@
-import { ICategoryServiceDto } from "@shared/interface/entities/category-service";
+import { IUpdateCategoryServicePort } from "@shared/interface/entities/category-service";
 
 interface ITypeServiceDto {
   id: number,
   name: string,
-  category: ICategoryServiceDto,
+  category: IUpdateCategoryServicePort,
   created_at: string,
   updated_at: string,
 }

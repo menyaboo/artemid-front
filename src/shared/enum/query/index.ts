@@ -7,13 +7,22 @@ enum EQueryValues {
 
   // appeal
   CreateAppeal = 'CreateAppeal',
+  UpdateAppeal = 'UpdateAppeal',
   GetAllAppeal = 'GetAllAppeal',
   GetAllAppealPersonal = 'GetAllAppealPersonal',
 
-  // service
+  // service category
   GetAllCategoryService = 'GetAllCategoryService',
+  UpdateCategoryService = 'UpdateCategoryService',
+  CreateCategoryService = 'CreateCategoryService',
+  DeleteCategoryService = 'DeleteCategoryService',
   GetAllStatusService = 'GetAllStatusService',
+
+  // service type
   GetAllTypeService = 'GetAllTypeService',
+  CreateTypeService = 'CreateTypeService',
+  DeleteTypeService = 'DeleteTypeService',
+  UpdateTypeService = 'UpdateTypeService',
 
   // analytics
   GetAnalyticsPersonal = 'GetAnalyticsPersonal',

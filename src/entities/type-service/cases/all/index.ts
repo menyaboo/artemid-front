@@ -3,15 +3,14 @@ import { EQueryValues } from "@shared/enum";
 import { GetAllTypeServiceSlice } from "@entities/type-service/slices";
 import { ITypeServiceDto, ITypeServiceParams } from "@shared/interface/entities/type-service";
 
-const useGetAllTypeServiceUseCase = (params: Partial<ITypeServiceParams>) => {
+const useGetAllTypeServiceUseCase = (params?: Partial<ITypeServiceParams>) => {
   const execute = async (): Promise<ITypeServiceDto[]> => {
     return GetAllTypeServiceSlice(params)
   }
 
   return useQuery({
     queryFn: execute,
-    queryKey: [EQueryValues.GetAllTypeService, params],
-    enabled: !!params.id
+    queryKey: [EQueryValues.GetAllTypeService, params]
   })
 }
 

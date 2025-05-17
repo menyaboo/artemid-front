@@ -4,7 +4,7 @@ import { GetAllStatusServiceSlice } from "@entities/status-service/slices";
 import { IStatusServiceDto } from "@shared/interface/entities/status-service";
 
 const useGetAllStatusServiceUseCase = () => {
-  const execute = async (): Promise<IStatusServiceDto> => {
+  const execute = async (): Promise<IStatusServiceDto[]> => {
     return GetAllStatusServiceSlice()
   }
 

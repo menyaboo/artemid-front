@@ -7,57 +7,69 @@ import { Table } from "@shared/ui/table";
 import { useModal } from "@shared/hooks";
 import { IAppealDto } from "@shared/interface/entities/appeal";
 import { useGetAllAppealUseCase } from "@entities/appeal/cases";
+import { UpdateAppealModal } from "@entities/appeal/ui";
+import { format } from "date-fns";
+import { ru } from "date-fns/locale";
 
 const columns: ColumnDef<IAppealDto>[] = [
-  {
-    header: 'Категория поломки',
-    accessorKey: 'type.category.name',
-  },
-  {
-    header: 'Тип поломки',
-    accessorKey: 'type.name',
-  },
-  {
-    header: 'Статус',
-    accessorKey: 'status.name',
-  },
-  {
-    header: 'Текст сообщения',
-    accessorKey: 'message',
-  },
+	{
+		header: 'Категория поломки',
+		accessorKey: 'type.category.name',
+	},
+	{
+		header: 'Тип поломки',
+		accessorKey: 'type.name',
+	},
+	{
+		header: 'Статус',
+		accessorKey: 'status.name',
+	},
+	{
+		header: 'Текст сообщения',
+		accessorKey: 'message',
+	},
+	{
+		header: 'Добавлен',
+		accessorFn: (row) => format(new Date(row.created_at), 'd MMMM yyyy', { locale: ru }),
+	},
+	{
+		header: 'Обновлен',
+		accessorFn: (row) => format(new Date(row.updated_at), 'd MMMM yyyy', { locale: ru }),
+	},
 ];
 
 const AppealTable = (): ReactNode => {
-  const { data: data = [] } = useGetAllAppealUseCase()
-  const modal = useModal<IAppealDto>()
+	const { data: data = [] } = useGetAllAppealUseCase()
+	const modal = useModal<IAppealDto>()
 
-  const table = useReactTable({
-    data,
-    columns: [
-      ...columns,
-      {
-        id: 'actions',
-        accessorKey: 'id',
-        header: () => <span>Действия</span>,
-        cell: (cell) => <TableCrudButton cell={ cell } modalEdit={ modal } />
-      }
-    ],
-    getCoreRowModel: getCoreRowModel(),
-  });
+	const table = useReactTable({
+		data,
+		columns: [
+			...columns,
+			{
+				id: 'actions',
+				accessorKey: 'id',
+				header: () => <span>Действия</span>,
+				cell: (cell) => <TableCrudButton cell={ cell } modalEdit={ modal }/>
+			}
+		],
+		getCoreRowModel: getCoreRowModel(),
+	});
 
-  return (
-    <MainWrapper className="flex col-span-3 flex-col w-full gap-4">
-      <IconTitle icon={ <TableOfContents/> } title="Ваши обрашения"/>
+	return (
+		<MainWrapper className="flex col-span-3 flex-col w-full gap-4">
+			<IconTitle icon={ <TableOfContents/> } title="Все обращения"/>
 
-      <Table>
-        <Table.Header headers={ table.getHeaderGroups() }/>
-        <Table.Body rows={ table.getRowModel().rows }/>
-      </Table>
+			<Table>
+				<Table.Header headers={ table.getHeaderGroups() }/>
+				<Table.Body rows={ table.getRowModel().rows }/>
+			</Table>
 
-    </MainWrapper>
-  )
+			<UpdateAppealModal modal={ modal }/>
+		</MainWrapper>
+	)
 }
 
 export {
-  AppealTable
+	AppealTable
 }

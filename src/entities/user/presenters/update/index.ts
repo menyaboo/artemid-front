@@ -22,9 +22,9 @@ const useUpdateUserFormPresenter = (user: IUserDto) => {
     await mutateAsync(data)
   })
 
-  const optionRoles = roles.map((r) => ({
-    label: r.name,
-    value: r.id
+  const optionRoles = roles.map((el) => ({
+    label: el.name,
+    value: el.id
   }))
 
   return {
