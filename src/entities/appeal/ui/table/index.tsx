@@ -10,6 +10,7 @@ import { useGetAllAppealUseCase } from "@entities/appeal/cases";
 import { UpdateAppealModal } from "@entities/appeal/ui";
 import { format } from "date-fns";
 import { ru } from "date-fns/locale";
+import { ERouterPath } from "@shared/enum";
 
 const columns: ColumnDef<IAppealDto>[] = [
 	{
@@ -50,7 +51,7 @@ const AppealTable = (): ReactNode => {
 				id: 'actions',
 				accessorKey: 'id',
 				header: () => <span>Действия</span>,
-				cell: (cell) => <TableCrudButton cell={ cell } modalEdit={ modal }/>
+				cell: (cell) => <TableCrudButton view={ ERouterPath.APPEAL } cell={ cell } modalEdit={ modal }/>
 			}
 		],
 		getCoreRowModel: getCoreRowModel(),

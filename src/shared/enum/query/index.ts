@@ -7,6 +7,7 @@ enum EQueryValues {
 
   // appeal
   CreateAppeal = 'CreateAppeal',
+  GetOneAppeal = 'GetOneAppeal',
   UpdateAppeal = 'UpdateAppeal',
   GetAllAppeal = 'GetAllAppeal',
   GetAllAppealPersonal = 'GetAllAppealPersonal',
@@ -30,6 +31,7 @@ enum EQueryValues {
 
   // notify
   GetAllNotification = 'GetAllNotification',
+  ReadNotification = 'ReadNotification',
 
   // users
   GetAllUsers = 'GetAllUsers',

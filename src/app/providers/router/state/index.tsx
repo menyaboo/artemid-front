@@ -11,6 +11,7 @@ const RegisterPage = lazy(async () => import('@pages/register'))
 const AnalyticsPage = lazy(async () => import('@pages/analytics'))
 const UsersPage = lazy(async () => import('@pages/users'))
 const AppealsPage = lazy(async () => import('@pages/appeals'))
+const AppealPage = lazy(async () => import('@pages/appeals/[id]'))
 const CategoryServicePage = lazy(async () => import('@pages/category-service'))
 const TypeServicePage = lazy(async () => import('@pages/type-service'))
 
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
 					{
 						path: ERouterPath.APPEAL,
 						element: <SuspenseLoadComponent Component={ AppealsPage }/>
+					},
+					{
+						path: `${ERouterPath.APPEAL}/:id`,
+						element: <SuspenseLoadComponent Component={ AppealPage }/>
 					},
 					{
 						path: ERouterPath.CATEGORY,
