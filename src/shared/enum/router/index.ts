@@ -3,6 +3,7 @@ enum ERouterPath {
   MAIN = '/',
   USERS = '/users',
   APPEAL = '/appeal',
+  APPEAL_MANAGER = '/appeal-manager',
   CATEGORY = '/category',
   TYPE = '/type',
   LOGIN = '/login',

@@ -17,6 +17,10 @@ const menuConfig = [
     roles: [EUserRoles.ADMIN, EUserRoles.MANAGER],
   },
   {
+    element: <Link to={ ERouterPath.APPEAL_MANAGER }>Заявки ожидающие выполнения</Link>,
+    roles: [EUserRoles.MANAGER],
+  },
+  {
     element: <Link to={ ERouterPath.CATEGORY }>Все категории</Link>,
     roles: [EUserRoles.ADMIN],
   },

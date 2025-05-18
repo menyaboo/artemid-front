@@ -39,12 +39,16 @@ const columns: ColumnDef<IAppealDto>[] = [
 	},
 ];
 
-const AppealTable = (): ReactNode => {
+interface IAppealTableProps {
+	isManager?: boolean
+}
+
+const AppealTable = ({ isManager = false }: IAppealTableProps): ReactNode => {
 	const { data: data = [] } = useGetAllAppealUseCase()
 	const modal = useModal<IAppealDto>()
 
 	const table = useReactTable({
-		data,
+		data: isManager ? data.filter((el) => ["open", "working"].includes(el.status.code)) : data,
 		columns: [
 			...columns,
 			{
